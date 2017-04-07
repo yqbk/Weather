@@ -146,3 +146,14 @@ export default reduxForm({
 ```javasript
 input type="text" className="form-control" {...title}/>
 ```
+
+## reduxForm and difference
+
+`connect`: 
+- first argument is `mapStateToProps`, 
+- 2nd is `mapDispatchToProps`
+
+`reduxForm`: 
+- 1st is form config, 
+- 2nd is `mapStateTopProps`, 
+- 3rd is `mapDispatchToProps`
