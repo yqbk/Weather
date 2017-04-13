@@ -110,6 +110,19 @@ render() {
   }
 ```
 
+## Route param
+
+Route parameter creates a prop `this.prop.params.id` and inject it to the component.
+
+```javascript
+  <Route path="/" component={App}>
+    <IndexRoute component={PostsIndex}/>
+    <Route path="posts/new" component={PostsNew}/>
+    // route parameter
+    <Route path="posts/:id" component={PostsShow}/>
+  </Route>
+```
+
 
 ## Redux-Form
 
