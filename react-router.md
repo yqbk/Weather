@@ -202,3 +202,27 @@ export default reduxForm({
 ```javascript
         <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : '' }`}>
 ```
+
+## Context
+
+We don't have to pass context explicitly into the child component. It's very easy way to access data through the application without explicitly passing it.
+
+**Do not overuse `context` in the application!**. 
+
+We should avoid using `context` as much as possible. It should **only** be used with `react-router`.
+
+Example:
+```javasript
+class PostsNew extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+  
+  onSubmit(props) {
+    this.props.createPost(props)
+      .then(() => {
+      // when post is succesfully created navigate to main page
+        this.context.router.push('/')
+      })
+  }
+```
