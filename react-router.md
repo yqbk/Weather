@@ -157,3 +157,48 @@ input type="text" className="form-control" {...title}/>
 - 1st is form config, 
 - 2nd is `mapStateTopProps`, 
 - 3rd is `mapDispatchToProps`
+
+## Form validation
+
+1. Create `validate` fucntion:
+
+```javascript
+function validate(values) {
+  const errors = {}
+
+  if (!values.title) {
+    // saved under title.error in the form
+    errors.title = 'Enter a username'
+  }
+
+  return errors
+}
+```
+
+2. Bind `validate` function with form:
+
+```javasript
+export default reduxForm({
+  form: 'PostsNewForm',
+  fields: ['title', 'categories', 'content'],
+  validate
+}, null, { createPost } )(PostsNew)
+```
+
+3. Use in the form:
+
+```javasript
+        <div className="form-group">
+          <label>Title</label>
+          <input type="text" className="form-control" {...title}/>
+          <div className="text-help">
+            {title.touched ? title.error : ''}
+          </div>
+        </div>
+```
+
+4. Add bootstrap styling to form:
+
+```javascript
+        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : '' }`}>
+```
